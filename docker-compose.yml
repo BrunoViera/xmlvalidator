@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  node:
+    build: "."
+    environment:
+      - NODE_ENV=production
+    expose:
+      - "8080"
+    tty: true
