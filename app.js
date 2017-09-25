@@ -2,6 +2,7 @@ const async = require('async');
 const request = require('request');
 const RequestHandler = require('./app/RequestHandler');
 const mainProcess = require('./app/MainProcess');
+
 try {
     mainProcess.start();
     const urls = [
@@ -31,11 +32,9 @@ try {
         }
     ];
 
-    console.log('comemnzo');
     function getXML(item, callback) {
         console.log('Processing xml ' + item.name);
         request(item, function(error, response, body) {
-            console.log('termino', item.name);
             RequestHandler.saveFromRequest(item.name, error, response);
             callback();
         });

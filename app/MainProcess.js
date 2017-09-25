@@ -33,7 +33,7 @@ function fail(error) {
     const mainProcess = {
         pid: process.pid,
         date: new Date().toISOString(),
-        event: EVENT_END,
+        event: EVENT_FAIL,
         uptime: Math.floor(process.uptime()),
         error: error
     };
