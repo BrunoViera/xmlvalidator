@@ -35,7 +35,7 @@ try {
     function getXML(item, callback) {
         console.log('Processing xml ' + item.name);
         request(item, function(error, response, body) {
-            RequestHandler.saveFromRequest(item.name, error, response);
+            RequestHandler.processRequest(item.name, error, response, body);
             callback();
         });
     }

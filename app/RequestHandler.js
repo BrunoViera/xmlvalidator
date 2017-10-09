@@ -9,7 +9,17 @@ function save(xmlRequest) {
         });
 }
 
-function saveFromRequest(name, error, response) {
+function getSize(body) {
+    let size = Buffer.byteLength(body, 'utf8') / 1000;
+    if (size > 1000) {
+        size = size / 1000 + ' Mb';
+    } else {
+        size = size + ' Kb';
+    }
+    return size;
+}
+
+function processRequest(name, error, response, body) {
     const xmlRequest = {
         name: name,
         createdAt: new Date().toISOString()
@@ -27,11 +37,11 @@ function saveFromRequest(name, error, response) {
         xmlRequest.firstByte = time.firstByte;
         xmlRequest.download = time.download;
         xmlRequest.total = time.total;
+        xmlRequest.size = getSize(body);
     }
     save(xmlRequest);
 }
 
 module.exports = {
-    save: save,
-    saveFromRequest: saveFromRequest
+    processRequest: processRequest
 };

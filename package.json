@@ -6,13 +6,12 @@
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "author": "bruno",
   "license": "ISC",
   "description": "An basic XML Validator ",
   "dependencies": {
     "async": "^2.5.0",
-    "request": "^2.81.0",
+    "request": "^2.83.0",
     "wedeploy": "^3.0.2"
   }
 }
