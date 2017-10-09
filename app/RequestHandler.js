@@ -16,7 +16,7 @@ function getSize(body) {
     } else {
         size = size + ' Kb';
     }
-    return size;
+    return size.toFixed(3);
 }
 
 function processRequest(name, error, response, body) {
@@ -25,6 +25,11 @@ function processRequest(name, error, response, body) {
         createdAt: new Date().toISOString()
     };
 
+    if (response.statusCode !== 200) {
+        xmlRequest.success = false;
+        xmlRequest.conextionError = response.statusCode;
+        console.log('Conection Error ', response.statusCode);
+    }
     if (error) {
         xmlRequest.success = false;
         console.log('ERROR Save From ', error);
@@ -39,7 +44,7 @@ function processRequest(name, error, response, body) {
         xmlRequest.total = time.total;
         xmlRequest.size = getSize(body);
     }
-    save(xmlRequest);
+    // save(xmlRequest);
 }
 
 module.exports = {
